@@ -1,0 +1,17 @@
+<% content_for :main do %>
+<%= render partial: "question_bank/html/season/widget_rank" %>
+<% end %>
+<% content_for :doc_ft do %>
+<script>
+Zepto(function($){
+  var popup = $("#widget-rank-rule");
+  $("#btn-detail").on("tap", function () {
+    popup.show();
+  });
+  $("#btn-close").on("touchend", function (evt) {
+    popup.hide();
+    evt.preventDefault();
+  });
+});
+</script>
+<% end %>

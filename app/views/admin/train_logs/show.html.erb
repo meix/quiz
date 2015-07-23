@@ -1,0 +1,39 @@
+<section class="main padder">
+  <div class="row">
+    <style>
+    .main .row:nth-child(2) td,.main .row:nth-child(2) th{
+      text-align:center
+      }
+    .table th{
+      background-color:#eee!important
+      }
+    .table th,.table td{
+      border:1px solid #ddd
+      }
+    </style>
+
+    <div class="row">
+      <section class="col-lg-12">
+        <div class="panel">
+          <header class="panel-heading">用户答题记录</header>
+          <table class="table table-striped m-b-none text-small">
+            <tbody>
+              <tr><th width="150">用户ID：</th><td class="text-left"><%= @record.user_id %></td></tr>
+              <tr><th>题目ID：</th><td class="text-left"><%= @record.question_id %></td></tr>
+              <tr><th>钻石数：</th><td class="text-left"><%= @record.diamond %></td></tr>
+              <tr><th>正确数：</th><td class="text-left"><%= @record.right_times %></td></tr>
+              <tr><th>答题总数：</th><td class="text-left"><%= @record.total_times %></td></tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                  <th class="row" colspan="2">
+                    <%= link_to "返回列表", admin_train_logs_path, class: "btn btn-inverse" %>
+                  </th>
+                </tr>
+              </tfoot>
+          </table>
+        </div>
+      </section>
+    </div>
+   </div>
+</section>

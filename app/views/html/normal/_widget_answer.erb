@@ -1,0 +1,24 @@
+<div class="widget-answer">
+  <div class="widget-hd">
+    <% if @record[:is_right] %>
+      <figure class="iconfont icon-right animated zoomIn fadeIn"></figure>
+      <div class="diamond animated zoomIn fadeIn">
+        <i class="iconfont iconfixed icon-iconzuanshi"></i>+
+        <%= @record[:diamond_count] %>
+      </div>
+    <% else %>
+      <figure class="iconfont icon-error animated zoomIn fadeIn"></figure>
+    <% end %>
+  </div>
+  <dl class="answer animated shootInUp">
+    <dt>正确答案</dt>
+    <dd class="item">
+      <div class="ordinal"><%= @record[:answer] %></div>
+      <div class="desc"><%= @record[:description] %></div>
+    </dd>
+  </dl>
+  <dl class="analyse animated shootInUp">
+    <dt>答案解析</dt>
+    <dd class="item"><%= @record[:explain] %></dd>
+  </dl>
+</div>

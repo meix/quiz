@@ -1,0 +1,110 @@
+.widget-result {
+
+  color: #000;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 768px;
+
+  .widget-bd {
+    margin: 0 10%;
+    padding: 0 25px;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: (100%);
+    margin: 30px 0 5px 0;
+  }
+
+  .star {
+    background-size: 205px auto;
+    background-position: 50% 0;
+    background-repeat: no-repeat;;
+    width: 100%;
+    height: 64px;
+    margin: 20px 0;
+    &.star-0 {
+      background-image: url(<%= asset_path "questions/season/star-0.png" %>);
+    }
+    &.star-1 {
+      background-image: url(<%= asset_path "questions/season/star-1.png" %>);
+    }
+    &.star-2 {
+      background-image: url(<%= asset_path "questions/season/star-2.png" %>);
+    }
+    &.star-3 {
+      background-image: url(<%= asset_path "questions/season/star-3.png" %>);
+    }
+    &.star-4 {
+      background-image: url(<%= asset_path "questions/season/star-4.png" %>);
+    }
+    &.star-5 {
+      background-image: url(<%= asset_path "questions/season/star-5.png" %>);
+    }
+  }
+
+  .score {
+    .row {
+      @include flex-box();
+      @include align-items();
+      font-size: 14px;
+      & > div {
+        text-align: center;
+        @include flex(1);
+      }
+      &.value {
+        font-size: 26px;
+      }
+    }
+    .correct-count {
+      color: #27d0af;
+    }
+    .correct-ratio {
+      color: #00bff3;
+    }
+    .diamond-count {
+      color: #ffa400;
+    }
+  }
+
+  .btn-group {
+    @include flex-box();
+    @include align-items();
+    margin: 20px 0;
+    .col {
+      @include flex(1);
+      box-sizing: border-box;
+      width: 50%;
+      float: left;
+      padding: 10px;
+    }
+    .pure-button {
+      text-align: center;
+      width: 100%;
+      margin: 0;
+    }
+    .iconfont {
+      font-size: 30px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -15px;
+      margin-top: -15px;
+    }
+  }
+
+  .animated {
+    -webkit-animation-duration: .5s;
+            animation-duration: .5s;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
+  }
+
+}

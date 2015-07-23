@@ -1,0 +1,35 @@
+<div class="widget-result animated shootInDown">
+  <div class="widget-bd box">
+    <%=image_tag @user.formated_avatar_url(width: 200, height: 200), alt: @user.nickname, class: "avatar", size:"100x100" %>
+    <section class="nickname"><%=@user.nickname%></section>
+    <section class="star star-<%=@record[:star]%>"></section>
+    <section class="score">
+      <div class="row">
+        <div>答对题目</div>
+        <div>正确率</div>
+        <div>获得钻石</div>
+      </div>
+      <div class="row value">
+        <div class="correct-count"><%= @record[:correct_count] %></div>
+        <div class="correct-ratio"><%= @record[:correct_ratio]*100 %>%</div>
+        <div class="diamond-count"><%= @record[:diamond_count] if @record[:diamond_count] %></div>
+      </div>
+    </section>
+    <div class="btn-group">
+      <div class="col">
+        <%= 
+          link_to("<i class='iconfont iconfixed icon-home'></i>".html_safe, 
+          api_v1_quizzes_path(token: current_user.token),
+          html_options = {class: "pure-button hot btn-home"}) 
+        %>
+      </div>
+      <div class="col">
+        <%=
+          link_to("<i class='iconfont iconfixed icon-ico'></i>".html_safe, 
+          rank_api_v1_quiz_path(id: @quiz[:id], token: current_user.token),
+          html_options = {class: "pure-button wheat btn-rank"}) 
+        %>
+      </div>
+    </div>
+  </div>
+</div>

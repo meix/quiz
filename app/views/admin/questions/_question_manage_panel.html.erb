@@ -1,0 +1,81 @@
+<section class="forum-wrap">
+  <div class="talk-modal-header">
+    <a class="close" style="margin:-13px 13px" onclick="hiddenDialog('questionDialog');">×</a>
+  </div>
+  <article class="forum-first-msg">
+    <span class='label bg-default'>题目标题：</span> <%= question.title %>
+  </article>
+</section><br/>
+
+<article class="forum-list">
+  <div class="contentpanel" id="questionOptionList">
+    <%= render partial: "/admin/question_options/option_list", locals: {records: records }%>
+  </div>
+</article>
+
+<div id="popDiv" class="new_window">
+  <div class="modal-content">
+    <div class="contentpanel">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default" style="margin-bottom:0px;">
+            <div class="panel-body nopadding" style="padding: 10px 0px 0px 0px;">
+              <div class="col-lg-12" id="replyToPanel">
+                <%= form_tag("/admin/question_options/add_question_option", method: "post", class: "form-horizontal", id: "questionOptionForm") do %>
+                  <%= hidden_field_tag(:question_id, question.id) %>
+                  <div class="form-group" style="margin: 10px 5px 0px">
+                    <div class="col-lg-5" >
+                      <%= text_field_tag(:ordinal, @ordinal, placeholder: "正确答案") %>
+                    </div>
+                  </div>
+                  <div class="form-group" style="margin: 10px 5px 0px">
+                    <div class="col-lg-10">
+                      <%= text_area_tag(:description, @description,
+                      {class: "form-control", placeholder: '正确选项内容...' }) %>
+                    </div>
+                    <div class="col-lg-2">
+                      <a id="submitChannelReplyForm" class="btn btn-success" style: "float:right" >保存</a>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    // click 保存按钮
+    $("#submitChannelReplyForm").click(function(){
+      ordinal = $('#ordinal').val();
+      description  =  $('#description').val();
+
+      if(ordinal != "" && description != ""){
+        $.ajax({
+          url: '/admin/question_options/add_question_option',
+          dataType:'text',
+          type: 'POST',
+          data: $('#questionOptionForm').serialize(),
+          success: function(result) {
+            $("#questionOptionList").html(result);
+          },
+          error:function(response){
+            var error_message = (response.status == 403) ? response.responseText : "程序处理异常，请稍后重试";
+            alert(error_message);
+          }
+        });
+
+        return false;
+      }else{
+        alert("请填写真确的选项内容！")
+        return false;
+      }
+    });
+
+  })
+</script>

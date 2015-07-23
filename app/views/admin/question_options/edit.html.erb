@@ -1,0 +1,33 @@
+<section class="col-lg-10">
+  <div class="panel-body">
+    <%= form_for([:admin, @record], html: {class: "form-horizontal", id: "ticket-type-1"}) do |f| %>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">所属题目ID:</label>
+          <div class="col-lg-4">
+            <%= f.text_field :question_id, class: "form-control", placeholder: "输入题目ID", data: {required: "true"} %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">题目选项序标<span>*</span></label>
+          <div class="col-lg-9">
+            <%= f.text_field :ordinal, class: "form-control", placeholder: "输入序标(A,B,C……)", data: {required: "true"} %>
+          </div>
+        </div>                
+
+        <div class="form-group">
+          <label class="col-lg-3 control-label">题目选项内容<span>*</span></label>
+          <div class="col-lg-9">
+            <%= f.text_area :description, class: "form-control", rows: 5, data: {rangelength: "[20,200]"} %>
+          </div>
+        </div>
+
+      <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3">
+          <a href="/admin/question_options" class="btn btn-white">取消</a>&nbsp;&nbsp;
+          <button type="submit" class="btn btn-primary">保存</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

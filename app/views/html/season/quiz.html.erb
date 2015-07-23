@@ -1,0 +1,16 @@
+<% content_for :doc_class do %>page-question<% end %>
+
+<% content_for :main do %>
+<%= render partial: "question_bank/html/season/widget_topbar" %>
+<div id="wrapper">
+  <%= render partial: "question_bank/html/season/widget_question" %>
+</div>
+<% end %>
+
+<% content_for :doc_ft do %>
+<script>
+Zepto(function($){
+  Quiz.Season && Quiz.Season.init();
+});
+</script>
+<% end %>

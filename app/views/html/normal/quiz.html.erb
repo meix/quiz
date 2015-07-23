@@ -1,0 +1,40 @@
+<% content_for :doc_class do %>page-question<% end %>
+
+<% content_for :main do %>
+<div id="wrapper">
+  <%= render partial: "question_bank/html/normal/widget_question" %>
+</div>
+<%= render partial: "question_bank/html/normal/widget_footer", locals: {
+  items: [
+    link_to(
+      "<i class='iconfont iconfixed icon-exit'></i>不玩了".html_safe, 
+      score_api_v1_quiz_path(user_id: current_user.id, token: current_user.token),
+      class: "exit",
+      style: @record[:at_last] ? "display:none" : "display:block"
+    ),
+    link_to(
+      "<i class='iconfont iconfixed icon-roundright'></i>下一题".html_safe, 
+      question_api_v1_quiz_path(token: current_user.token),
+      id: "btn-next",
+      class: "next",
+      style: @record[:at_last] ? "display:none" : "display:block"
+    ),
+    link_to(
+      "<i class='iconfont iconfixed icon-roundright'></i>学霸，你竟然答完了所有题目！".html_safe, 
+      score_api_v1_quiz_path(user_id: current_user.id, token: current_user.token),
+      class: "finshed",
+      style: @record[:at_last] ? "display:block" : "display:none"
+    )
+  ],
+  animates: ""
+} %>
+<% end %>
+
+
+<% content_for :doc_ft do %>
+<script>
+Zepto(function($){
+  Challenge && Challenge.init();
+});
+</script>
+<% end -%>

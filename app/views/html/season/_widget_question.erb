@@ -1,0 +1,18 @@
+<div class="widget-question">
+  <%= form_for :@record,
+    url: answer_api_v1_quiz_path(id: @quiz.id), 
+    html: { id: 'form-question' } do |f| %>
+    <p class="title animated shootInUp"><%= @record[:question].title %></p>
+    <%= hidden_field_tag(:token, current_user.token) %>
+    <%= hidden_field_tag(:ordinal, "", id:"ordinal") %>
+    <%= hidden_field_tag(:question_id, @record[:question].id) %>
+    <div class="options">
+    <% @record[:question_options].each do |item| %>
+      <div jsaction="submit" data-ordinal="<%= item.ordinal %>" class="pure-button item box animated shootInUp">
+        <div class="ordinal"><%= item.ordinal %></div>
+        <div class="desc"><%= item.description %></div>  
+      </div>
+    <% end %>
+    </div>
+  <% end %>
+</div>

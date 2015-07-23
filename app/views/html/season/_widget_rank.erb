@@ -1,0 +1,50 @@
+<div class="widget-rank">
+  <p class="summary animated fadeIn">
+    本期结算日：<%= @record[:quiz].end_at.strftime("%m月%d日") %><br>前十名将获得500 ~ 1000 钻石的额外奖励，其他排名奖励规则，请
+    <%= link_to( "查看详情", "javascript:void(0)", 
+      html_options = {id: "btn-detail", class: "pure-button wheat btn-detail"}
+    )%>
+  </p>
+  <div class="rank-list">
+    <% if @record && @record[:current_user_score] %>
+      <a href="<%=score_api_v1_quiz_path(id: @quiz.id, user_id: current_user.id, token: current_user.token)%>" class="item box myinfo animated shootInDown">
+        <div class="tb">
+          <%=image_tag current_user.formated_avatar_url, alt: current_user.nickname, class: "avatar" %>
+        </div>
+        <div class="tf">
+          <div class="nickname"><%= current_user.nickname %></div>
+          <p class="info">正确率<%= @record[:current_user_score].correct_ratio * 100 %>%，用时<%= @record[:current_user_score].spend %>秒</p>
+        </div>
+        <div class="num">第<b><%= @record[:ranking] %></b>名</div>
+        <div class="tip"><i></i></div>
+      </a>
+    <% end %>
+    <% @record[:user_scores_list].each_with_index do |item, index| %>
+      <% user = @record[:user_info][item.user_id] %>
+      <a href="<%=score_api_v1_quiz_path(id: @quiz.id, user_id: item.user_id, token: current_user.token)%>" class="item box animated shootInUp">
+        <div class="tb">
+          <%=image_tag user.formated_avatar_url, alt: user.nickname, class: "avatar", size:"38x38" %>
+        </div>
+        <div class="tf">
+          <div class="nickname"><%= user.nickname %></div>
+          <p class="info">
+            正确率<%= item.correct_ratio*100%>%，用时<%= item.spend %>秒
+          </p>
+        </div>
+        <div class="num">第<b><%=index+1%></b>名</div>
+        <div class="tip"><i></i></div>
+      </a>
+    <% end %>
+  </div>
+</div>
+
+<div id="widget-rank-rule" class="widget-rank-rule animated fadeIn">
+  <div class="widget-bd animated shootInDown">
+    <div id="btn-close" class="close"></div>
+    <h3 class="title">排行榜奖励细则</h3>
+    <ol class="list">
+      <li>每期最后一天为结算日，期间不能答题，排行榜不再变动，奖励在结算日发放。</li>
+      <li>排行榜奖励细则：冠军1000钻，亚军800钻，季军600钻，4-10名500钻。</li>
+    </ol>
+  </div>
+</div>

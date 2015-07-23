@@ -1,0 +1,223 @@
+// 默认字体
+@mixin font-family() {
+  font-family: 
+    Helvetica, 
+    Arial, 
+    "Helvetica Neue", 
+    "Droid Sans", 
+    "Heiti SC", 
+    sans-serif;
+}
+
+@mixin font-mini() {
+  font-family: 
+    "mini", 
+    Helvetica, 
+    Arial, 
+    "Helvetica Neue", 
+    "Droid Sans", 
+    "Heiti SC", 
+    sans-serif;
+}
+
+
+@mixin flex-box() {
+  display: box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  /* 09版 */
+  -webkit-box-orient: horizontal;
+  /* 12版 */
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  -o-flex-direction: row;
+  flex-direction: row;
+}
+
+@mixin flex($value: 1) {
+  -webkit-box-flex: $value;
+  -webkit-flex: $value;
+      -ms-flex: $value;
+          flex: $value;
+}
+
+@mixin justify-content($value: center){
+  /* 09版 */
+  -webkit-box-pack: $value;
+  /* 12版 */
+  -webkit-justify-content: $value;
+  -moz-justify-content: $value;
+  -ms-justify-content: $value;
+  -o-justify-content: $value;
+  justify-content: $value;
+}
+
+@mixin align-items($value: center){
+  /* 09版 */
+  -webkit-box-align: $value;
+  /* 12版 */
+  -webkit-align-items: $value;
+  -moz-align-items: $value;
+  -ms-align-items: $value;
+  -o-align-items: $value;
+  align-items: $value;
+}
+
+@mixin flex-direction($value: column) {
+  /* 09版 */
+  -webkit-box-orient: vertical;
+  /* 12版 */
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  -o-flex-direction: $value;
+  flex-direction: $value;
+}
+
+
+@mixin transform($value: scale(1)) {
+  -webkit-transform: $value;
+  -moz-transform: $value;
+  -ms-transform: $value;
+  -o-transform: $value;
+  transform: $value;
+}
+
+@mixin transform-origin($value: 50% 50% 0) {
+  -webkit-transform-origin: $value;
+  -moz-transform-origin: $value;
+  -ms-transform-origin: $value;
+  -o-transform-origin: $value;
+  transform-origin: $value;
+}
+
+@mixin transition($value: all 0.35s ease-in-out) {
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -ms-transform: $value;
+  -o-transform: $value;
+  transition: $value;
+}
+
+@mixin border-radius($radius: 0px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow ($values) {
+  -webkit-box-shadow: $values;
+  -moz-box-shadow: $values;
+  -ms-box-shadow: $values;
+  -o-box-shadow: $values;
+  box-shadow: $values;
+}
+
+@mixin text-shadow ($values) {
+  -webkit-text-shadow: $values;
+  -moz-text-shadow: $values;
+  -ms-text-shadow: $values;
+  -o-text-shadow: $values;
+  text-shadow: $values;
+}
+
+@mixin text-stroke ($values) {
+  -webkit-text-stroke: $values;
+  -moz-text-stroke: $values;
+  -ms-text-stroke: $values;
+  -o-text-stroke: $values;
+  text-stroke: $values;
+}
+
+@mixin user-select ($values) {
+  -webkit-user-select: $values;
+  -moz-user-select: $values;
+  -ms-user-select: $values;
+  -o-user-select: $values;
+  user-select: $values;
+}
+
+@mixin linear-gradient ($values) {
+  background-image: -moz-linear-gradient($values);
+  background-image: -webkit-linear-gradient($values);
+  background-image: -o-linear-gradient($values);
+  background-image: -ms-linear-gradient($values);
+  background-image: linear-gradient($values);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+$icon-hot: #FF3333; //献血红
+$icon-orange: #FF7500; //橙色
+$icon-wheat: #FFA400; //小麦黄
+$icon-yellow: #FFD900; //黄色
+$icon-lawn: #9ED900; //草地绿
+$icon-aqua: #1BD1A5; //蓝绿
+$icon-sky: #44CEF6; //天空蓝
+
+// 颜色
+$brand-hot: #ff4c4b; //献血红
+$brand-orange: #FF9F43; //橙色
+$brand-wheat: #FFC243; //小麦黄
+$brand-yellow: #FFE043; //黄色
+$brand-lawn: #B9D942; //草地绿
+$brand-aqua: #33CC99; //蓝绿
+$brand-sky: #35B0EA; //天空蓝
+
+
+/*按钮 Buttons*/
+
+// 按钮默认文字颜色
+$btn-default-color: #fff;
+
+// 按钮背景色及边框
+$btn-hot-bg : $brand-hot;
+$btn-hot-border : $brand-hot;
+
+$btn-orange-bg : $brand-orange;
+$btn-orange-border : $brand-orange;
+
+$btn-wheat-bg : $brand-wheat;
+$btn-wheat-border : $brand-wheat;
+
+$btn-yellow-bg : $brand-yellow;
+$btn-yellow-border : $brand-yellow;
+
+$btn-lawn-bg : $brand-lawn;
+$btn-lawn-border : $brand-lawn;
+
+$btn-aqua-bg : $brand-aqua;
+$btn-aqua-border : $brand-aqua;
+
+$btn-sky-bg : $brand-sky;
+$btn-sky-border : $brand-sky;
+
+
+// border-radius
+$border-radius-base: 0;
+$border-radius-large: 0;
+$border-radius-small: 0;
+
+
+// large
+$padding-large-vertical: 14px;
+$padding-large-horizontal: 40px;
+$font-size-large: 24px;
+
+/*base*/
+$padding-base-vertical: 10px;
+$padding-base-horizontal: 28px;
+$font-size-base: 18px;
+$line-height-base: 1.46;
+
+/*small*/
+$padding-small-vertical: 7px;
+$padding-small-horizontal: 15px;
+$font-size-small: 14px;
+$line-height-small: 1.428571429;

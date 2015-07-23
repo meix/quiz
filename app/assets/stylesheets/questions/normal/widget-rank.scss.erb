@@ -1,0 +1,147 @@
+.page-rank {
+  .norank {
+    text-align: center;
+    margin: 2em auto;
+  }
+  .rank-list {
+    .item {
+      &:nth-child(1), &:nth-child(2), &:nth-child(3){
+        .num {
+          color: $icon-yellow;
+        }
+      }
+    }
+  }
+  .item {
+    color: #fff;
+    list-style: none;
+    padding: 15px 10px;
+    border-bottom: 1px #9888b8 solid;
+    position: relative;
+
+    -webkit-animation-duration: .6s;
+            animation-duration: .6s;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
+
+    @include flex-box();
+    @include align-items();
+
+    &:nth-child(1) {
+      -webkit-animation-delay: .1s;
+              animation-delay: .1s
+    }
+    &:nth-child(2) {
+      -webkit-animation-delay: .15s;
+              animation-delay: .15s
+    }
+    &:nth-child(3) {
+      -webkit-animation-delay: .2s;
+              animation-delay: .2s
+    }
+    &:nth-child(4) {
+      -webkit-animation-delay: .25s;
+              animation-delay: .25s
+    }
+    &:nth-child(5) {
+      -webkit-animation-delay: .3s;
+              animation-delay: .3s
+    }
+    &:nth-child(6) {
+      -webkit-animation-delay: .35s;
+              animation-delay: .35s
+    }
+    &:nth-child(7) {
+      -webkit-animation-delay: .4s;
+              animation-delay: .4s
+    }
+    &:nth-child(8) {
+      -webkit-animation-delay: .45s;
+              animation-delay: .45s
+    }
+    &:nth-child(9) {
+      -webkit-animation-delay: .5s;
+              animation-delay: .5s
+    }
+    &:nth-child(10) {
+      -webkit-animation-delay: .65s;
+              animation-delay: .65s
+    }
+    .num {
+      @include flex(0 1 34px);
+      width: 34px;
+      display: block;
+      text-align: center;
+      font-style: normal;
+      vertical-align: middle;
+    }
+    .tb {
+      @include flex(0 1 52px);
+      width: 52px;
+      display: block;
+      position: relative;
+      text-align: center;
+      .avatar {
+        width: 38px;
+        height: 38px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -19px;
+        margin-top: -19px;
+        border-radius: (100%);
+      }
+    }
+    .tf {
+      @include flex(1 1 0);
+      p {
+        margin: 0;
+      }
+      .info {
+        font-size: 14px;
+      }
+    }
+    &:nth-child(1) {
+      .tip {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        &:before {
+          content: "冠军";
+          text-align: center;
+          width: 30px;
+          height: 12px;
+          font-size: 12px;
+          padding: 1px 0 0 0;
+          line-height: 1;
+          display: block;
+          background-color: $icon-wheat;
+        }
+        i {
+          position: absolute;
+          left: 0;
+          top: 13px;
+          width: 0;
+          height: 0;
+          border-left: 15px solid transparent;
+          border-right: 15px solid transparent;
+          border-top: 6px solid $icon-wheat;
+        }
+      }
+      &.myinfo {
+        .num {
+          font-size: 14px;
+        }
+        .tip{
+          &:before{
+            content: '我';
+            background-color: $icon-aqua;
+          }
+          i {
+            border-top-color: $icon-aqua;
+          }
+        }
+      }
+    }
+  }
+}

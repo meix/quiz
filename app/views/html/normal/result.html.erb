@@ -1,0 +1,41 @@
+<%# content_for :doc_hd do %>
+<%# end %>
+<%# content_for :main do %>
+<%#= render partial: "question_bank/html/normal/widget_result.erb" %>
+<%#= render partial: "question_bank/html/normal/widget_footer.erb", locals: {
+  items: [
+    link_to(
+      "<i class='iconfont iconfixed icon-deji'></i>返回主菜单".html_safe, 
+      api_v1_questions_path(token: current_user.token)
+    ),
+    link_to(
+      "<i class='iconfont iconfixed icon-cup'></i>查看排行榜".html_safe, 
+      rank_api_v1_question_scores_path(token: current_user.token)
+    )
+  ],
+  animates: "animated slideInUp"
+} %>
+<%# end %>
+
+
+<% content_for :doc_hd do %>
+<style>
+#main{background-color: #ff7500;}
+</style>
+<% end %>
+<% content_for :main do %>
+<%= render partial: "question_bank/html/normal/widget_result.erb" %>
+<%= render partial: "question_bank/html/normal/widget_footer.erb", locals: {
+  items: [
+    link_to(
+      "<i class='iconfont iconfixed icon-deji'></i>返回主菜单".html_safe, 
+      api_v1_quizzes_path(token: current_user.token)
+    ),
+    link_to(
+      "<i class='iconfont iconfixed icon-cup'></i>查看排行榜".html_safe, 
+      rank_api_v1_quiz_path(token: current_user.token)
+    )
+  ],
+  animates: "animated slideInUp"
+} %>
+<% end %>

@@ -1,0 +1,47 @@
+.widget-footer {
+  &.animated {
+    -webkit-animation-duration: .5s;
+            animation-duration: .5s;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
+    -webkit-animation-delay: .5s;
+            animation-delay: .5s;
+  }
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 8px 0;
+  @include flex-box();
+  a {
+    @include flex();
+    text-align: center;
+    padding: 8px 0;
+    display: block;
+    color: $brand-hot;
+    position: relative;
+    &:nth-child(1) {
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 1px;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        background-color: #ddd;
+        @include transform(scaleX(0.5));
+      }
+      //border-right: 1px #dfdfdf solid;
+    }
+  }
+  .iconfont {
+    display: inline-block;
+    margin-right: 4px;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    vertical-align: -5px;
+  }
+}
+

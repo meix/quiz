@@ -1,0 +1,66 @@
+.widget-result {
+  .animated {
+    -webkit-animation-duration: .5s;
+            animation-duration: .5s;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
+  }
+  figure {
+    text-align: center;
+    margin-top: 12%;
+  }
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: (100%);
+  }
+  .nickname {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 60px;
+  }
+  .score {
+    position: relative;
+    text-align: center;
+    color: #333;
+    margin: 0 15px;
+    border-radius: 6px;
+    padding: 30px 20px;
+    line-height: 1.3;
+    background-color: #fff;
+    b {
+      color: $brand-hot;
+      font-size: 24px;
+      padding: 0 6px;
+      font-weight: 400;
+    }
+  }
+  .star {
+    background-size: 260px auto;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    margin: 0 -20px;
+    height: 80px;
+    top: -40px;
+    &.star-0 {
+      background-image: url(<%= asset_path "questions/star-0.png" %>);
+    }
+    &.star-1 {
+      background-image: url(<%= asset_path "questions/star-1.png" %>);
+    }
+    &.star-2 {
+      background-image: url(<%= asset_path "questions/star-2.png" %>);
+    }
+    &.star-3 {
+      background-image: url(<%= asset_path "questions/star-3.png" %>);
+    }
+    &.star-4 {
+      background-image: url(<%= asset_path "questions/star-4.png" %>);
+    }
+    &.star-5 {
+      background-image: url(<%= asset_path "questions/star-5.png" %>);
+    }
+  }
+}

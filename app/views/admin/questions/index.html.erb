@@ -1,0 +1,144 @@
+<% if params[:notices].present? %>
+  <% if params[:notices].class == String  %>
+    <div class="alert alert-warning alert-block m-t m-b-none">
+      <button type="button" class="close" data-dismiss="alert">X</button>
+      <h4 style="float:left"> 导入（题目/选项）提示：</h4>
+      <p>恭喜导入成功<%= params[:notices] %></p>
+    </div>
+   <% else params[:notices][:question_id].present? %>
+    <div class="alert alert-warning alert-block m-t m-b-none">
+      <button type="button" class="close" data-dismiss="alert">X</button>
+      <h4 style="float:left"> 导入出错的（题目/选项）提示：</h4>
+      <p>出错的（题目/选项）编号：<%= params[:notices][:question_id].to_i %></p></br>
+      <% if params[:notices][:title].present? %>
+        <p style="margin: -14px 0 0 256px;">出错的（题目/选项）题干：<%= params[:notices][:title] %></p></br>
+      <% else %>
+        <p style="margin: -14px 0 0 256px;">出错的（题目/选项）类型：<%= params[:notices][:category] %></p></br>
+        <p style="margin: -14px 0 0 256px;">出错的（题目/选项）答案：<%= params[:notices][:answer] %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<section class="main padder">
+  <div class="row">
+    <style>
+    .table td,table th{
+      text-align:center
+      }
+    </style>
+
+    <section class="col-lg-12">
+      <div class="panel m-t">
+        <header class="panel-heading">题库列表</header>
+        <div class="panel-body">
+          <div class="row text-small">
+            <div class="col-lg-7">
+              <%= search_form_for([:admin, @search], id: 'searchForm') do |f| %>
+                <div class="col-lg-3">
+                  <%= f.text_field(:category_cont, placeholder: "题目类型", class: "form-control") %>
+                </div>
+                <div class="col-lg-2">
+                  <input class="form-control" type="text" placeholder="数量" value="数量：<%= @search_count.count %>" disabled="disabled">
+                </div>
+                <div class="col-lg-2">
+                  <%= select_tag "q[status_eq]", select_tag_options_for(Question::STATUS_TYPES, selected: @status_value, name: "状态"), {class: "form-control"} %>
+                </div>
+               <label>
+              </label>
+                <div class="col-lg-1">
+                  <%= f.submit "查询", class: "btn btn-sm btn-white" %>
+                </div>
+                <div class="col-lg-1">
+                  <a class="btn btn-success btn-sm" href="/admin/questions/new">新增题目</a>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-lg-5">
+              <%= form_tag("/admin/questions/import", method: "post", multipart: true) do %>
+                <div class="col-lg-3">
+                  <%= file_field_tag :file, class: "btn btn-white" %>
+                </div>
+                <button type="submit" id="submitQuestionForm" class="btn btn-info btn-sm" style="float:right;margin:3px 15px">Excel导入题目</button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <table class="table table-striped m-b-none text-small">
+          <thead>
+            <tr>
+              <th>编号</th>
+              <th>题目名称</th>
+              <th>题目等级</th>
+              <th>题目类型</th>
+              <th>挑战模式</th>
+              <th>正确答案</th>
+              <th>题目解析</th>
+              <th>状态</th>
+              <th>管理选项</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @records && @records.size > 0 %>
+              <% @records.each do |record| %>
+                <tr  id="record_<%= record.id %>">
+                  <td><%= record.id %></td>
+                  <td><a href="/admin/questions/<%= record.id %>" title="查看详情"><%= record.title.truncate(20) %></a>
+                  <td><%= record.level %></td>
+                  <td><%= record.category %></td>
+                  <td><%= quiz_question_type(record.quiz_type) %></td>
+                  <td><%= record.answer %></td>
+                  <td><%= record.explain.truncate(40) %></td>
+                  <td><%= question_status(record.status) %></td>
+                  <td><%= question_option_link(record.id)%></td>
+                  <td>
+                    <%= link_to admin_question_path(record.id) do %>
+                      <%= image_tag asset_path '../assets/admin/xiangqing.jpg' %>
+                    <% end %>
+                    <%= link_to edit_admin_question_path(record.id) do %>
+                      <%= image_tag asset_path '../assets/admin/bianji.jpg' %>
+                    <% end %>
+                    <%= link_to admin_question_path(record.id), remote: true, method: :delete, data: {confirm: "确定删除?"} do %>
+                      <%= image_tag asset_path '../assets/admin/shanchu.jpg' %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% else %>
+              <tr>
+                <td rowspan="5">无结果</td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <% if @records && @records.size > 0 %>
+        <%= paginate @records %>
+      <% end %>
+    </section>
+  </div>
+</section>
+
+<div class="modal" id="questionDialog">
+  <div class="modal-dialog" style="width:900px; margin:65px 100px 20px;">
+    <div class="modal-content">
+      <div class="table-responsive" id="questionPanel"></div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    // click excel导入
+    $("#submitQuestionForm").click(function(){
+      var file = $('input[type="file"]').val()
+      if(file == ""){
+        alert("请选择需要倒入的Eecel文件！")
+        return false;
+      }
+    });
+  })
+</script>

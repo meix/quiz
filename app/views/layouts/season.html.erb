@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<%= csrf_meta_tags %>
+<title>健康大问答</title>
+<%= stylesheet_link_tag "questions/application", media: "all" %>
+<%= stylesheet_link_tag "questions/season", media: "all" %>
+<%#= doc_hd必须在CSS加载完成之后 %>
+<%= yield :doc_hd %>
+<script>
+window.USER_TOKEN = "<%=current_user.try(:token)%>" || "";
+</script>
+</head>
+<body class="<%= yield :doc_class %>">
+<%= yield :header %>
+<div id="main">
+<%= yield :main %>
+</div>
+<%= yield :footer %>
+<%= javascript_include_tag "questions/application" %>
+<%= javascript_include_tag "questions/season" %>
+<%#= doc_ft必须在核心JS加载完成之后 %>
+<%= yield :doc_ft %>
+</body>
+</html>

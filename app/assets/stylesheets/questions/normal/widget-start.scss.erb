@@ -1,0 +1,172 @@
+.tips-finished {
+  @include flex-box();
+  @include align-items();
+  @include justify-content();
+  position: absolute;
+  height: 100px;
+  bottom: 84px;
+  width: 100%;
+  color: #fff;
+  text-align: center;
+}
+
+.btn-start {
+  @include border-radius(100%);
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: #ff4c4b;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-size: 24px;
+  line-height: 100px;
+  position: absolute;
+  left: 50%;
+  bottom: 16%;
+  margin-left: -50px;
+}
+
+/*
+.widget-start {
+  background-image: url(<%= asset_path "questions/index-banner.png" %>);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 10px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+*/
+
+.widget-rule {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: #60bc68;
+  //display: none;
+  background-color: #6c559a;
+  h4 {
+    text-align: center;
+    font-size: 24px;
+  }
+  ol {
+    margin: 0 25px;
+    line-height: 1.5;
+    list-style-position: inside;
+  }
+}
+
+.widget-banner {
+  position: absolute;
+  width: 120%;
+  top: 10%;
+  left: -10%;
+  li {
+    @include transform(rotate(15deg));
+    list-style: none;
+    font-size: 40px;
+    position: relative;
+    margin-top: 1px;
+    -webkit-animation-duration: .6s;
+            animation-duration: .6s;
+    i {
+      @include transform(rotate(-15deg));
+      content: "";
+      position: absolute;
+      background-repeat: no-repeat;
+    }
+    b {
+      line-height: 1;
+      background-color: #6c559a;
+      padding: 1px 15px;
+      margin: 0;
+      position: relative;
+    }
+    &:nth-child(1) {
+      background-color: #3fa9f5;
+      -webkit-animation-delay: .5s;
+              animation-delay: .5s;
+      b {
+        margin-left: 30%;
+      }
+      i {
+        background-image: url(<%= asset_path "questions/jump-1.png" %>);
+        background-size: 52px auto;
+        width: 52px;
+        height: 91px;
+        top: -76px;
+        left: auto;
+        right: 22%;
+      }
+    }
+    &:nth-child(2) {
+      background-color: #9ed900;
+      -webkit-animation-delay: .45s;
+              animation-delay: .45s;
+      b {
+        margin-left: 35%;
+      }
+      i {
+        background-image: url(<%= asset_path "questions/jump-2.png" %>);
+        background-size: 36px auto;
+        width: 36px;
+        height: 75px;
+        top: -70px;
+        left: 10%
+      }
+    }
+    &:nth-child(3) {
+      background-color: #ffd900;
+      -webkit-animation-delay: .4s;
+              animation-delay: .4s;
+      b {
+        margin-left: 40%;
+      }
+      i {
+        background-image: url(<%= asset_path "questions/jump-3.png" %>);
+        background-size: 33px auto;
+        width: 33px;
+        height: 72px;
+        top: -70px;
+        right: 15%;
+      }
+    }
+    &:nth-child(4) {
+      background-color: #ffa400;
+      -webkit-animation-delay: .35s;
+              animation-delay: .35s;
+      b {
+        margin-left: 45%;
+      }
+      i {
+        background-image: url(<%= asset_path "questions/jump-4.png" %>);
+        background-size: 64px auto;
+        width: 64px;
+        height: 54px;
+        top: -50px;
+        left: 15%;
+      }
+    }
+    &:nth-child(5) {
+      background-color: #ff7500;
+      -webkit-animation-delay: .3s;
+              animation-delay: .3s;
+      b {
+        margin-left: 50%;
+      }
+      i {
+        background-image: url(<%= asset_path "questions/jump-5.png" %>);
+        background-size: 65px auto;
+        width: 65px;
+        height: 65px;
+        top: -65px;
+        right: 20%;
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+/*练习模式下的公共样式*/
+
+@font-face {
+  font-family: "iconfont";
+  src: url(<%= asset_path 'questions/iconfont/iconfont.eot' %>); /* IE9*/
+  src: url(<%= asset_path 'questions/iconfont/iconfont.eot?#iefix' %>) format('embedded-opentype'), /* IE6-IE8 */
+  url(<%= asset_path 'questions/iconfont/iconfont.woff' %>) format('woff'), /* chrome、firefox */
+  url(<%= asset_path 'questions/iconfont/iconfont.ttf' %>) format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url(<%= asset_path 'questions/iconfont/iconfont.svg#iconfont' %>) format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  //-webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.iconfont.iconfixed {
+  position: relative;
+  &:before {
+    position: absolute;
+    line-height: 1;
+    top: 0;
+    left: 0;
+  }
+}
+.icon-right:before { content: "\e607"; }
+.icon-roundright:before { content: "\e600"; }
+.icon-sidebarinfo:before { content: "\e601"; }
+.icon-cup:before { content: "\e602"; }
+.icon-iconzuanshi:before { content: "\e60a"; }
+.icon-info:before { content: "\e603"; }
+.icon-exit:before { content: "\e604"; }
+.icon-deji:before { content: "\e605"; }
+.icon-error:before { content: "\e608"; }
+.icon-boshimao:before { content: "\e606"; }
+.icon-cup:before { content: "\e602"; }
+
+#main {
+  background-color: #6c559a;
+}

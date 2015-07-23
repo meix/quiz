@@ -1,0 +1,12 @@
+<div class="widget-result animated shootInDown">
+  <figure>
+    <%=image_tag @user.formated_avatar_url(width: 200, height: 200), alt: @user.nickname, class: "avatar", size:"100x100" %>
+  </figure>
+  <div class="nickname"><%=@user.nickname%></div>
+  <section class="score">
+    <div class="star star-<%=@record[:star]%>"></div>
+    累计答对了<b><%= @record[:correct_count] %></b>道题<br>
+    正确率<b><%= @record[:correct_ratio]*100 %>%</b><br>
+    获得了<b><%= @record[:diamond_count] if @record[:diamond_count] %></b>颗钻石<br>
+  </section>
+</div>

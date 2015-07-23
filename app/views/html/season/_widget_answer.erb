@@ -1,0 +1,33 @@
+<div class="widget-answer">
+  <% if @record[:is_right] %>
+    <figure class="img-right animated zoomIn fadeIn">
+      <%=image_tag "questions/season/icon-right.png", size:"117x112" %>
+    </figure>
+  <% else %>
+    <figure class="img-error animated zoomIn fadeIn">
+      <%=image_tag "questions/season/icon-error.png", size:"117x112" %>
+    </figure>
+  <% end %>
+  <dl class="answer animated shootInUp">
+    <dt>正确答案</dt>
+    <dd class="item box">
+      <div class="ordinal"><%= @record[:answer] %></div>
+      <div class="desc"><%= @record[:description] %></div>
+    </dd>
+    <dd class="btn-group">
+      <% if @record[:at_last] %>
+        <%= 
+          link_to("交卷<i id='countdown'>(5秒)</i>".html_safe, 
+          score_api_v1_quiz_path(user_id: current_user.id, token: current_user.token),
+          html_options = {id: "btn-submit", class: "pure-button wheat btn-next"}) 
+        %>
+      <% else %>
+        <%= 
+          link_to("下一题<i id='countdown'>(5秒)</i>".html_safe, 
+          question_api_v1_quiz_path(token: current_user.token),
+          html_options = {id: "btn-next", class: "pure-button wheat btn-next"}) 
+        %>
+      <% end %>
+    </dd>
+  </dl>
+</div>

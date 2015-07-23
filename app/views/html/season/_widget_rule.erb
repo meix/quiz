@@ -1,0 +1,18 @@
+<div class="widget-rule animated shootInDown">
+  <div class="widget-bd box">
+    <h1>答题规则</h1>
+    <ol>
+      <li>每周只能玩一次，答完就有奖哦！</li>
+      <li>又快又好，排行就高！</li>
+      <li>排行越高，奖励越好！（奖励以结算日排行为准）</li>
+    </ol>
+   <% if @record[:finished] %>  
+      <%= link_to( "已答过", api_v1_quizzes_path(token: current_user.token), html_options = {class: "pure-button hot btn-start"}) %>
+    <% else %>
+      <%= link_to( "开始", 
+        question_api_v1_quiz_path(token: current_user.token, id: @quiz.id), 
+        html_options = {class: "pure-button hot btn-start"}
+      ) %>
+    <% end %>
+  </div>
+</div>

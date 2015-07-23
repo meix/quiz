@@ -1,0 +1,76 @@
+<% content_for :main do %>
+  <!-- <div class="widget-banner animated shootInDown">
+    <ul class="line">
+      <li class=""><b>健</b><i></i></li>
+      <li class=""><b>康</b><i></i></li>
+      <li class=""><b>大</b><i></i></li>
+      <li class=""><b>问</b><i></i></li>
+      <li class=""><b>答</b><i></i></li>
+    </ul>
+  </div> -->
+  <div class="widget-rule animated shootInDown">
+    <h4>答题规则</h4>
+    <ol>
+      <li>点击下方的"开始"按钮开始答题。</li>
+      <li>所有题目均为单选。</li>
+      <li>答对题目将获得钻石奖励，答错不计分。</li>
+      <li>题目从题库中随机抽取，您答对的题目将不会再次出现。</li>
+      <li>您可以随时点击交卷，答题进度将被保存。</li>
+    </ol>
+  </div>
+  
+  <% if @record[:finished] %>  
+    <div class="tips-finished animated shootInUp">
+      题目已全部答完，请等待更新
+    </div>
+  <% elsif (@record[:limit_count] && @record[:limit_count] >= 50) %>
+    <div class="tips-finished animated shootInUp">
+      您今天已经答了50题啦<br>请学霸君明日再来！
+    </div>
+  <% else %>
+    <%= link_to("开始", question_api_v1_quiz_path(id: @quiz.id, token: current_user.token), html_options = {class: "btn-start animated shootInUp"}) %>
+  <% end %>
+
+  <%#= render partial: "question_bank/html/normal/widget_footer", locals: {
+    items: [
+      link_to(
+        "<i class='iconfont iconfixed icon-info'></i>答题规则".html_safe, 
+        "javascript:void(0)",
+        id: "btn-rule"
+      ),
+      link_to(
+        "<i class='iconfont iconfixed icon-cup'></i>查看排行榜".html_safe, 
+        rank_api_v1_quiz_path(id: @quiz.id, token: current_user.token)
+      )
+    ],
+    animates: "animated slideInUp"
+  } %>
+<% end %>
+
+<% content_for :doc_ft do %>
+<script>
+  var widgetRule = $(".widget-rule");
+  var btnRule = $("#btn-rule");
+  var is_show_rule = false;
+  btnRule.on("tap", function (evt) {
+    if(is_show_rule) {
+      widgetRule.removeClass("shootInDown");
+      widgetRule.addClass("animated shootOutUp");
+      is_show_rule = false;
+    } else {
+      widgetRule.show();
+      widgetRule.removeClass("shootOutUp");
+      widgetRule.addClass("animated shootInDown");
+      is_show_rule = true;
+    }
+    evt.preventDefault();
+    evt.stopPropagation();
+    return false;
+  });
+  btnRule.on("click", function (evt) {
+    evt.preventDefault();
+    evt.stopPropagation();
+    return false;
+  });  
+</script>
+<% end %>

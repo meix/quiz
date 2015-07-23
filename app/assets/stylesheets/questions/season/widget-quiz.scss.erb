@@ -1,0 +1,142 @@
+.page-question {
+  #main {
+    @include justify-content(flex-start);
+  }
+}
+
+#wrapper {
+  position: relative;
+  z-index: 10;
+  min-height: 100%;
+  width: 100%;
+  max-width: 768px;
+}
+
+.widget-answer, 
+.widget-limit, 
+.widget-question {
+  width: 100%;
+  box-sizing: border-box;
+  .animated {
+    -webkit-animation-duration: .6s;
+            animation-duration: .6s;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
+  }
+  .btn-group {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    .btn-next {
+      @include font-mini();
+      font-size: 28px;
+      padding: .6em 1em;
+      font-weight: 400;
+      i {
+        font-style: normal;
+        font-size: 14px;
+        font-weight: 400;
+        margin-left: 10px;
+        @include font-family();
+      }
+    }
+  }
+  .item {
+    @include flex-box();
+    @include align-items();
+    text-align: left;
+    white-space: normal;
+    background-color: #fff;
+    padding: 22px 20px;
+    color: #333;
+    line-height: 1.5;
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    font-weight: 400;
+    .ordinal {
+      @include text-shadow(2px 2px 6px #ff9000);
+      @include box-shadow((
+        0 -2px 0 0 darken($brand-wheat, 15%) inset,
+        0 2px 3px 0 rgba(0, 0, 0, .1)
+      ));
+      @include flex(0 1 auto);
+      @include border-radius(100%);
+      background-color: $brand-wheat;
+      font-family: "mini";
+      color: #fff;
+      width: 25px;
+      height: 25px;
+      margin-right: 15px;
+      text-align: center;
+      
+    }
+    .desc {
+      @include font-family();
+      @include flex(1);
+    }
+  }
+}
+
+.widget-question {
+  padding: 15px 15px 0 15px;
+  .title {
+    text-align: left;
+    margin: 0 0 1.5em 0;
+  }
+  .options {
+    .item {
+      &:nth-child(1) {
+        -webkit-animation-delay: .3s;
+                animation-delay: .3s
+      }
+      &:nth-child(2) {
+        -webkit-animation-delay: .35s;
+                animation-delay: .35s
+      }
+      &:nth-child(3) {
+        -webkit-animation-delay: .4s;
+                animation-delay: .4s
+      }
+      &:nth-child(4) {
+        -webkit-animation-delay: .45s;
+                animation-delay: .45s
+      }
+    }
+  }
+}
+
+
+.widget-answer,
+.widget-limit {
+  padding: 0 15px;
+  figure {
+    height: 112px;
+    text-align: center;
+    margin: 20px auto;
+    position: relative;
+    &:before {
+      line-height: 1;
+    }
+  }
+}
+
+.widget-answer {
+  .answer,
+  .analyse {
+    margin: 15px 0 0 0;
+    dt {
+      text-align: left;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.widget-limit {
+  .tips {
+    margin: 2em auto;
+  }
+  .item {
+    @include justify-content();
+  }
+}

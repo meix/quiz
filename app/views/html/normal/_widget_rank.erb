@@ -1,0 +1,35 @@
+<div class="page-rank">
+  <% if @record && @record[:current_user_score] %>
+    <a href="<%=score_api_v1_quiz_path(id: @quiz.id, user_id: current_user.id, token: current_user.token)%>" class="item myinfo animated shootInDown">
+      <div class="num"><%= @record[:ranking] %></div>
+      <div class="tb">
+        <%=image_tag current_user.formated_avatar_url, alt: current_user.nickname, class: "avatar" %>
+      </div>
+      <div class="tf">
+        <div class="nickname">
+          <%= current_user.nickname %>
+        </div>
+        <p class="info">
+          共得到<%= @record[:current_user_score].diamond_count %>钻石，正确率<%= @record[:current_user_score].correct_ratio*100 %>%
+        </p>
+      </div>
+      <div class="tip"><i></i></div>
+    </a>
+  <% end %>
+  <div class="rank-list">
+    <% @record[:user_scores_list].each_with_index do |item, index| %>
+      <% user = @record[:user_info][item.user_id] %>
+      <a href="<%=score_api_v1_quiz_path(id: @quiz.id, user_id: item.user_id, token: current_user.token)%>" class="item animated shootInUp">
+        <div class="num"><%=index+1%></div>
+        <div class="tb">
+          <%=image_tag user.formated_avatar_url, alt: user.nickname, class: "avatar", size:"38x38" %>
+        </div>
+        <div class="tf">
+          <div class="nickname"><%= user.nickname %></div>
+          <p class="info">共得到<%= item.diamond_count %>钻石，正确率<%= item.correct_ratio*100%>%</p>
+        </div>
+        <div class="tip"><i></i></div>
+      </a>
+    <% end %>
+  </div>
+</div>

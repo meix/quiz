@@ -1,0 +1,20 @@
+<% content_for :main do %>
+<div class="widget-index">
+  <div class="title animated shootInDown">
+    <h1>
+      <%=image_tag "questions/season/title.png", alt: "健康大问答", size:"302x86" %>
+    </h1>
+    <h4>得钻石涨姿势</h4>
+  </div>
+  <ul class="btn-groups">
+    <li class="item animated shootInUp">
+    <!-- TODO user tokrn -->
+      <%= link_to("练习模式",start_api_v1_train_path(token: "string"),class: "pure-button wheat")%>
+      <%= link_to(
+        "<i class='iconfont iconfixed icon-ico'></i>".html_safe,
+        rank_api_v1_train_path(token: "string"), class: "pure-button wheat"
+      )%>
+    </li>
+  </ul>
+</div>
+<% end %>

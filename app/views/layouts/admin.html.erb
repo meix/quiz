@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <title><%= yield(:title) || '知识问答' %></title>
+  <meta name="apple-itunes-app" content="app-id=923891669">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="telephone=no" name="format-detection">
+  <meta name="viewport">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico" />
+  <%= stylesheet_link_tag 'admin' %>
+  <%= javascript_include_tag 'admin' %>
+</head>
+<body>
+  <!-- header -->
+  <%= render partial: "/admin/common/header"%>
+  <!-- / header -->
+  <section id="content" class="content-sidebar bg-white">
+    <%= yield %>
+  </section>
+  <!-- footer -->
+  <footer id="footer">
+    <div class="text-center padder clearfix">
+      <p> <small>&copy; 2015 -智力问答-题库- 后台</small>
+      </p>
+    </div>
+  </footer>
+  <!-- / footer -->
+</body>
+</html>

@@ -1,0 +1,21 @@
+<ul class="widget-topbar">
+  <li class="number">
+    <div class="icon">
+      <i class='iconfont iconfixed icon-deji'></i>
+    </div>
+    <div class="txt">
+      <span id="num">
+        <i id="quiz_index"><%=@record[:now_question_index]%></i> / 
+        <i id="quiz_count"><%=@record[:all_question_index]%></i> 
+      </span> 题
+    </div>
+  </li>
+  <li class="stopwatch">
+    <div class="icon">
+      <div class="plate"><div class="pointer"><i></i></div></div>
+    </div>
+    <div class="txt">
+      <span id="time">00:00</span>
+    </div>
+  </li>
+</ul>

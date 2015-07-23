@@ -1,0 +1,18 @@
+<div class="widget-limit">
+  <div class="widget-hd">
+    <figure class="iconfont icon-boshimao animated zoomIn fadeIn"></figure>
+  </div>
+  <div class="animated shootInUp">
+    <p class="tips">哇！您今天已经答了50题啦！适度答题益脑，沉迷答题伤身，请学霸君明日再来！</p>
+    <%= 
+      link_to(
+        "好吧，明天等着我！",
+        score_api_v1_quiz_path(
+          user_id: current_user.id, 
+          token: current_user.token, 
+        ),
+        class: "item"
+      )
+    %>
+  </div>
+</div>

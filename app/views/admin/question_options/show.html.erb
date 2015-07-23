@@ -1,0 +1,37 @@
+<section class="main padder">
+  <div class="row">
+    <style>
+    .main .row:nth-child(2) td,.main .row:nth-child(2) th{
+      text-align:center
+      }
+    .table th{
+      background-color:#eee!important
+      }
+    .table th,.table td{
+      border:1px solid #ddd
+      }
+    </style>
+
+    <div class="row">
+      <section class="col-lg-12">
+        <div class="panel">
+          <header class="panel-heading">题目选项信息</header>
+          <table class="table table-striped m-b-none text-small">
+            <tbody>
+              <tr><th width="150">所属题目ID：</th><td class="text-left"><%= @record.question_id %></td></tr>
+              <tr><th>题目选项序标：</th><td class="text-left"><%= @record.ordinal %></td></tr>
+              <tr><th>题目选项内容：</th><td class="text-left"><%= @record.description %></td></tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                  <th class="row" colspan="2">
+                    <a class="btn btn-inverse" href="/admin/question_options/">返回列表</a>
+                  </th>
+                </tr>
+              </tfoot>
+          </table>
+        </div>
+      </section>
+    </div>
+   </div>
+</section>
